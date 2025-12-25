@@ -83,8 +83,8 @@ This project demonstrates:
 ## 👨‍💻 Developer
 
 **Sri Ragul A A**  
-MERN Stack Developer | UI/UX Designer | Problem Solver  
-Final Year Student | Actively seeking developer roles  
+MERN Stack Developer | Problem Solver  
+Pre Final Year Student | Actively seeking developer roles  
 
 ---
 
