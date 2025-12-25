@@ -27,7 +27,6 @@ This project demonstrates real-world scalable MERN architecture.
 ### 🏠 User Features
 - Category-based product browsing  
 - Featured products on home page  
-- Product search & filtering  
 - Cart management  
 - Coupon apply & validation system  
 - Secure Stripe checkout  
