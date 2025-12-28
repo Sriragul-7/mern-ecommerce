@@ -4,50 +4,48 @@ import redis from "../lib/redis.js"
 
 
 //Generate Refresh and Access tokens
-const generateTokens=(userId)=>{
-  const accessToken=jwt.sign(
-    {userId}, 
-    process.env.ACCESS_TOKEN_SECRET,
-    {expiresIn:"15m"}
-  );
+const generateTokens = (userId) => {
+	const accessToken = jwt.sign({ userId }, process.env.ACCESS_TOKEN_SECRET, {
+		expiresIn: "15m",
+	});
 
-  const refreshToken=jwt.sign(
-    {userId},
-    process.env.REFRESH_TOKEN_SECRET,
-    {expiresIn:"7d"}
-  );
+	const refreshToken = jwt.sign({ userId }, process.env.REFRESH_TOKEN_SECRET, {
+		expiresIn: "7d",
+	});
 
-  return {accessToken,refreshToken}
-}
-
-//Store Refresh token
+	return { accessToken, refreshToken };
+};
+// store refresh token
 const storeRefreshToken = async (userId, refreshToken) => {
-  await redis.set(
-    `refresh_token:${userId}`,
-    refreshToken,
-    {
-      EX: 7 * 24 * 60 * 60,
-    }
-  );
+  await redis.set(`refresh_token:${userId}`, refreshToken, {
+    ex: 60 * 60 * 24 * 7
+  });
 };
 
 
 // Set Cookies
+const cookieOptions = {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  path: "/"
+};
 
-const setCookies=(res,accessToken,refreshToken)=>{
-  res.cookie("accessToken",accessToken,{
-    httpOnly:true,       //------> prevent XSS attacks, cross site scripting attack
-    secure:process.env.NODE_ENV==="production",
-    sameSite:"strict",   //------> prevent CSRF attacks, cross-site request forgery attack
-    maxAge:15*60*1000    // 15min
-  })
-  res.cookie("refreshToken",refreshToken,{
-    httpOnly:true,
-    secure:process.env.NODE_ENV==="production",
-    sameSite:"strict",
-    maxAge:7*24*60*60*1000  // 7days
-  })
-}
+//  httpOnly:true,       //------> prevent XSS attacks, cross site scripting attack
+// sameSite:"strict",   //------> prevent CSRF attacks, cross-site request forgery attack
+
+const setCookies = (res, accessToken, refreshToken) => {
+  res.cookie("accessToken", accessToken, {
+    ...cookieOptions,
+    maxAge: 15 * 60 * 1000
+  });
+
+  res.cookie("refreshToken", refreshToken, {
+    ...cookieOptions,
+    maxAge: 7 * 24 * 60 * 60 * 1000
+  });
+};
+
 
 
 export const signup=async(req,res)=>{
@@ -152,12 +150,12 @@ export const refreshToken=async(req,res)=>{
       {expiresIn: "15min" }
     );
 
-    res.cookie("accessToken",accessToken,{
-      httpOnly:true,
-      secure:process.env.NODE_ENV==="production",
-      sameSite:"strict",
-      maxAge: 15*60*1000
+    res.cookie("accessToken", accessToken, {
+    ...cookieOptions,
+    maxAge: 15 * 60 * 1000
     });
+
+
 
     res.json({message:"Token created successfully"})
   }

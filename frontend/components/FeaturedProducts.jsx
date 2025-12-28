@@ -27,8 +27,8 @@ const FeaturedProducts = ({ featuredProducts }) => {
 
   return (
     <div className="py-16 relative">
-      <h2 className="text-center text-5xl sm:text-6xl font-bold text-emerald-400 mb-10">
-        Featured
+      <h2 className="text-center text-4xl font-bold text-emerald-400 mb-10">
+        On Demand
       </h2>
 
       <div className="relative">
@@ -40,6 +40,7 @@ const FeaturedProducts = ({ featuredProducts }) => {
           <div
             className="flex transition-transform duration-500 ease-out"
             style={{ transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)` }}
+
           >
             {featuredProducts.map((product) => (
               <div
@@ -60,7 +61,7 @@ const FeaturedProducts = ({ featuredProducts }) => {
                       {product.name}
                     </h3>
                     <p className="text-emerald-300 font-bold mb-4">
-                      ${product.price.toFixed(2)}
+                      ₹{product.price.toFixed(2)}
                     </p>
 
                     <button

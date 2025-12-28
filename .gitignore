@@ -1,0 +1,23 @@
+# Node
+node_modules/
+.env
+
+# Build
+dist/
+build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# System
+.DS_Store
+Thumbs.db
+
+# Large media
+*.mp4
+*.zip
+*.rar
+*.7z
+*.exe

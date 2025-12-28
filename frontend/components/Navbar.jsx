@@ -11,12 +11,13 @@ const Navbar = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full bg-gray-900 backdrop-blur-md shadow-lg z-40 transition-all duration-300 border-b border-emerald-800">
-      <div className="container mx-auto px-4 py-3 my-2 flex flex-wrap justify-between items-center">
+      <div className="container mx-auto px-4 py-2 my-2 flex flex-wrap justify-between items-center">
       
-        <Link  to='/' className="text-2xl font-bold text-emerald-500 items-center space-x-2 flex" >
-        E-Commerce
+        <Link  to='/'className="text-3xl font-bold tracking-[0.25em] text-emerald-400" >
+        ZUDIO
+        <p className="text-sm pb-0 text-white tracking-[0.75em]">FASHION</p>
         </Link>
-
+        
         <nav className="flex flex-wrap items-center gap-5">
           <Link 
            to={"/"}

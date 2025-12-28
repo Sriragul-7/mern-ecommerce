@@ -35,7 +35,7 @@ export const getFeaturedProducts=async(req,res)=>{
     }
     catch(error){
         await redis.del("featured_products");
-        console.log("Error in getFeaturedProduct controller",error.message);
+        console.log("Error in getFeaturedProduct controller",error);
         res.status(500).json({message:"Server Error",error:error.message});
     }
 }

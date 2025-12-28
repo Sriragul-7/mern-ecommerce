@@ -60,12 +60,21 @@ export const useUserStore = create((set,get) => ({
             set({checkingAuth: false , user:null})
         }
     },
+   refreshToken: async()=>{
+    if(get().checkingAuth) return;
+
+    set({checkingAuth: true});
+    try {
+      const response = await axios.post("/auth/refresh-token");
+      set({checkingAuth: false});
+      return response.data
+    } catch (error) {
+      set({user: null, checkingAuth: false});
+      throw error;
+    }
+   } 
 
 }))
-
-
-
-
 
 
 // Axios version
