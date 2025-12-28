@@ -120,9 +120,10 @@ MERN Stack | Problem Solving
 ## Admin-dashboard
 <img width="1903" height="906" alt="admin-create" src="https://github.com/user-attachments/assets/a3f96eca-ad76-47d8-b5c4-0019c541b551" />
 
-<img width="1917" height="916" alt="admin-view" src="https://github.com/user-attachments/assets/ff9f6a34-ace6-45df-9143-4c244a7a1819" />
+<img width="1904" height="908" alt="image" src="https://github.com/user-attachments/assets/c3e1b1d1-15bd-432b-88e3-68ecaec8c307" />
 
-<img width="1907" height="914" alt="admin-analyse" src="https://github.com/user-attachments/assets/42d375b3-654d-479a-9142-f35de1a76a62" />
+<img width="1907" height="913" alt="image" src="https://github.com/user-attachments/assets/411f5f9f-af38-460c-81db-17fb9a236ce4" />
+
 
 
 
