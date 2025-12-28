@@ -1,10 +1,9 @@
-# 🛒 MERN Ecommerce Platform (Preview)
+# 🛒 MERN Ecommerce Platform
 
-🚧 **Status:** Under active development
+> A full-scale, production-ready ecommerce platform built using the MERN stack, featuring secure authentication, admin dashboard, coupon system, Stripe payments, Redis caching, and scalable architecture.
 
-A full-stack ecommerce web application with secure authentication, admin dashboard, coupon system, featured product caching and Stripe payment integration.
-
-This project demonstrates real-world scalable MERN architecture.
+🔗 **Live Preview:** *(Add your deployed link here)*  
+📦 **Status:** Completed & Actively Maintained
 
 ---
 
@@ -15,22 +14,23 @@ This project demonstrates real-world scalable MERN architecture.
 | Frontend | React, Tailwind CSS |
 | Backend | Node.js, Express |
 | Database | MongoDB (Mongoose) |
-| Cache | Redis |
+| Caching | Redis (Upstash) |
 | Image Storage | Cloudinary |
 | Payments | Stripe |
 | Authentication | JWT (Access & Refresh Tokens) |
 
 ---
 
-## ✨ Features
+## ✨ Core Features
 
-### 🏠 User Features
+### 🧑‍💻 User Side
 - Category-based product browsing  
-- Featured products on home page  
-- Cart management  
-- Coupon apply & validation system  
+- Featured products on homepage (Redis cached)  
+- Cart management system  
+- Coupon apply & validation  
 - Secure Stripe checkout  
 - Token-based authentication  
+- Persistent login with refresh tokens  
 
 ---
 
@@ -40,50 +40,68 @@ This project demonstrates real-world scalable MERN architecture.
 - Coupon creation & management  
 - User management  
 - Sales analytics dashboard  
-- Weekly sales chart visualization  
+- Weekly sales visualization using charts  
 
 ---
 
 ## ⚡ Performance & Security
-- Redis caching for featured products & auth sessions  
-- Secure JWT authentication  
+
+- Redis caching for featured products and auth sessions  
+- HTTP-Only cookies for JWT storage  
+- Access & Refresh token flow  
 - Cloudinary optimized image delivery  
-- Protected admin routes  
+- Protected admin routes & role-based authorization  
+- Secure Stripe payment handling  
 
 ---
 
-## 🎯 Project Purpose
+## 📸 Screenshots
 
-This project demonstrates:
-
-- Full-stack MERN development  
-- Secure backend design  
-- Admin dashboard architecture  
-- Payment gateway integration  
-- Caching & performance optimization  
+> *(Add screenshots of Home, Admin Panel, Cart, Checkout, Dashboard)*
 
 ---
 
-## 👨‍💻 Developer
+## 🧠 System Architecture
+
+- Scalable MVC backend structure  
+- Modular controller-service-route pattern  
+- Centralized authentication middleware  
+- Redis-based performance optimization  
+- Clean separation of frontend & backend services  
+
+---
+
+## 🎯 What This Project Demonstrates
+
+- Real-world MERN architecture  
+- Secure authentication design  
+- Admin panel implementation  
+- Stripe payment gateway integration  
+- Redis caching & performance tuning  
+- Production-grade folder structuring  
+
+---
+
+## 🧑‍💻 Developer
 
 **Sri Ragul A A**  
-MERN Stack Developer | Problem Solver  
-Pre Final Year Student | Actively seeking developer roles  
+MERN Stack Developer | Robotics & IoT Enthusiast  
+Pre-Final Year Student | Actively seeking Internship & Developer Roles  
+
+📧 Add your email  
+🔗 Add your LinkedIn / Portfolio  
 
 ---
 
 ## 📌 Upcoming Enhancements
+
 - Order history & invoices  
 - Email notifications  
-- Product reviews  
-- Performance optimization  
+- Product reviews & ratings  
+- Recommendation engine  
+- Advanced performance optimization  
 
 ---
-
-## ⭐ Portfolio Project
-
-This project is part of my professional placement portfolio.
-
 
 ## 📸 Screenshots
 
