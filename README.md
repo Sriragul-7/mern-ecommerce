@@ -52,21 +52,6 @@ This project demonstrates real-world scalable MERN architecture.
 
 ---
 
-## 🚧 Project Status
-
-✔ Authentication  
-✔ Admin panel  
-✔ Product management  
-✔ Coupon system  
-✔ Redis caching  
-✔ Stripe payment integration  
-
-⏳ Refresh token rotation  
-⏳ Testing  
-⏳ Deployment  
-
----
-
 ## 🎯 Project Purpose
 
 This project demonstrates:
@@ -103,13 +88,20 @@ This project is part of my professional placement portfolio.
 ## 📸 Screenshots
 
 ### Home
-<img width="1909" height="907" alt="home" src="https://github.com/user-attachments/assets/b751a284-2d8f-4d31-9bbe-687cfea4d9ab" />
+<img width="1907" height="912" alt="Screenshot 2025-12-28 113040" src="https://github.com/user-attachments/assets/d5c59c99-8aa4-4330-9de3-a3ad2f0070b0" />
 
-### Featured
-<img width="1906" height="912" alt="featured" src="https://github.com/user-attachments/assets/7a02a708-7192-4d30-b59d-636aae08c48b" />
+
+### On demand
+<img width="1902" height="903" alt="Screenshot 2025-12-28 113229" src="https://github.com/user-attachments/assets/1475332b-f8a5-465a-9542-a1a543c32e7c" />
+
 
 ## Cart
-<img width="1900" height="909" alt="cart" src="https://github.com/user-attachments/assets/9a0798ab-3f64-4412-b312-2cc3c6cf2819" />
+<img width="1900" height="907" alt="Screenshot 2025-12-28 113538" src="https://github.com/user-attachments/assets/274a55d5-a836-4744-8d98-55cb577f7651" />
+
+
+## Explore
+<img width="1902" height="905" alt="Screenshot 2025-12-28 113323" src="https://github.com/user-attachments/assets/b55c24ee-7b2d-444a-a86c-1f559ed81376" />
+
 
 ## Payment
 <img width="1915" height="909" alt="payment" src="https://github.com/user-attachments/assets/b4d14731-125e-4fcd-b96e-513cda46d677" />
