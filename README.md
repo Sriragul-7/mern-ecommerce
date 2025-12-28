@@ -2,9 +2,6 @@
 
 > A full-scale, production-ready ecommerce platform built using the MERN stack, featuring secure authentication, admin dashboard, coupon system, Stripe payments, Redis caching, and scalable architecture.
 
-🔗 **Live Preview:** *(Add your deployed link here)*  
-📦 **Status:** Completed & Actively Maintained
-
 ---
 
 ## 🚀 Tech Stack
@@ -55,11 +52,6 @@
 
 ---
 
-## 📸 Screenshots
-
-> *(Add screenshots of Home, Admin Panel, Cart, Checkout, Dashboard)*
-
----
 
 ## 🧠 System Architecture
 
@@ -85,11 +77,9 @@
 ## 🧑‍💻 Developer
 
 **Sri Ragul A A**  
-MERN Stack Developer | Robotics & IoT Enthusiast  
-Pre-Final Year Student | Actively seeking Internship & Developer Roles  
+MERN Stack | Problem Solving
 
-📧 Add your email  
-🔗 Add your LinkedIn / Portfolio  
+📧 sriragul.aa@gmail.com
 
 ---
 
