@@ -33,7 +33,7 @@ export const useUserStore = create((set,get) => ({
     const res = await axios.post("/auth/login", { email, password });
     set({ user: res.data});
     console.log("user :",res.data)
-    toast.success(`Welcome ${res.data.name}`);
+    toast.success("Logged in successfully");
   } catch (error) {
     toast.error(error.response?.data?.message || error.message);
   } finally {
@@ -50,37 +50,29 @@ export const useUserStore = create((set,get) => ({
       }
     },
 
-   checkAuth: async () => {
-  set({ checkingAuth: true });
-  try {
-    const res = await axios.get("/auth/profile");
-    set({ user: res.data, checkingAuth: false });
-  } catch (error) {
-    // Attempt to refresh the token if the profile fetch fails
+    checkAuth: async()=>{
+        set({checkingAuth:true});
+
+        try {
+            const response = await axios.get("/auth/profile");
+            set({user: response.data.user || response.data, checkingAuth: false})
+        } catch (error) {
+            set({checkingAuth: false , user:null})
+        }
+    },
+   refreshToken: async()=>{
+    if(get().checkingAuth) return;
+
+    set({checkingAuth: true});
     try {
-      await axios.post("/auth/refresh-token");
-      // Retry getting the profile after refresh
-      const retryRes = await axios.get("/auth/profile");
-      set({ user: retryRes.data, checkingAuth: false });
-    } catch (refreshError) {
-      // If refresh also fails, user remains null
-      set({ user: null, checkingAuth: false });
+      const response = await axios.post("/auth/refresh-token");
+      set({checkingAuth: false});
+      return response.data
+    } catch (error) {
+      set({user: null, checkingAuth: false});
+      throw error;
     }
-  }
-},
-
-
-refreshToken: async () => {
-  // Remove the `checkingAuth` guard to allow refresh
-  try {
-    const response = await axios.post("/auth/refresh-token");
-    // Optionally update user state if needed, or just return data
-    return response.data;
-  } catch (error) {
-    set({ user: null });
-    throw error;
-  }
-}
+   } 
 
 }))
 
