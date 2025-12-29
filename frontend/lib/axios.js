@@ -4,7 +4,6 @@ const axiosInstance = axios.create({
   baseURL: "http://localhost:5000/api",
   withCredentials: true,
 });
-
 let refreshPromise = null;
 
 axiosInstance.interceptors.response.use(
@@ -12,7 +11,14 @@ axiosInstance.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
-    if (error.response?.status === 401 && !originalRequest._retry) {
+    if (
+      error.response?.status === 401 &&
+      !originalRequest._retry &&
+      !originalRequest.url.includes("/auth/login") &&
+      !originalRequest.url.includes("/auth/signup") &&
+      !originalRequest.url.includes("/auth/refresh-token") &&
+      !originalRequest.url.includes("/auth/profile")  
+    ) {
       originalRequest._retry = true;
 
       try {
@@ -25,16 +31,14 @@ axiosInstance.interceptors.response.use(
         }
 
         return axiosInstance(originalRequest);
-      } catch (err) {
-        // force logout
-        localStorage.clear();
-        window.location.href = "/login";
-        return Promise.reject(err);
+      } catch {
+        return Promise.reject(error);
       }
     }
 
     return Promise.reject(error);
   }
 );
+
 
 export default axiosInstance;

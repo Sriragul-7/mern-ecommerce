@@ -26,10 +26,11 @@ const storeRefreshToken = async (userId, refreshToken) => {
 // Set Cookies
 const cookieOptions = {
   httpOnly: true,
-  secure: process.env.NODE_ENV === "production",
-  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-  path: "/"
+  secure: true,         // FORCE secure ALWAYS
+  sameSite: "none",     // FORCE cross-site cookie
+  path: "/",
 };
+
 
 //  httpOnly:true,       //------> prevent XSS attacks, cross site scripting attack
 // sameSite:"strict",   //------> prevent CSRF attacks, cross-site request forgery attack
@@ -129,42 +130,37 @@ export const logout=async(req,res)=>{
     }
 }
  
-export const refreshToken=async(req,res)=>{
-  try{
-    const  refreshToken=req.cookies.refreshToken;
+export const refreshToken = async (req, res) => {
+  try {
+    const refreshToken = req.cookies.refreshToken;
+    if (!refreshToken) return res.status(401).json({ message: "No refresh token" });
 
-    if(!refreshToken){
-      return res.status(401).json({message:"No refresh token provided"});
-    }
+    const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
+    const redisKey = `refresh_token:${decoded.userId}`;
 
-    const decoded=jwt.verify(refreshToken,process.env.REFRESH_TOKEN_SECRET);
-    const storedToken=await redis.get(`refresh_token:${decoded.userId}`);
+    const storedToken = await redis.get(redisKey);
+    if (storedToken !== refreshToken) return res.status(401).json({ message: "Invalid refresh token" });
 
-    if(storedToken !== refreshToken){
-      return res.status(401).json({message:"Invalid refresh token"});
-    }
+  
+    await redis.expire(redisKey, 60 * 60 * 24 * 7);
 
-    const accessToken=jwt.sign(
-      {userId:decoded.userId},
+    const newAccessToken = jwt.sign(
+      { userId: decoded.userId },
       process.env.ACCESS_TOKEN_SECRET,
-      {expiresIn: "15min" }
+      { expiresIn: "15m" }
     );
 
-    res.cookie("accessToken", accessToken, {
-    ...cookieOptions,
-    maxAge: 15 * 60 * 1000
+    res.cookie("accessToken", newAccessToken, {
+      ...cookieOptions,
+      maxAge: 15 * 60 * 1000,
     });
 
-
-
-    res.json({message:"Token created successfully"})
+    res.json({ message: "Token refreshed" });
+  } catch {
+    return res.status(401).json({ message: "Refresh failed" });
   }
-  catch(error){
-    console.log("Error in refreshToken contoller",error.message);
-    res.status(500).json({message:error.message});
-  }
+};
 
-}
 
 export const getProfile=async(req,res)=>{
   try {

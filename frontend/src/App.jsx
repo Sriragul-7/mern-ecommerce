@@ -28,7 +28,7 @@ function App() {
     getCartItems();
   }, [getCartItems, user]);
 
-  if (checkingAuth) return <LoadingSpinner />;
+if (checkingAuth) return <LoadingSpinner />;
 
   return (
     <div className="min-h-screen bg-gray-900 text-white relative overflow-hidden">
@@ -47,6 +47,7 @@ function App() {
     background: "linear-gradient(to right, rgba(22,163,74,0.3), rgba(16,185,129,0.2), rgba(20,83,45,0.3))"
   }}
 ></div>  */}
+
 
       <div className="relative z-50 p-20">
         <Navbar />
